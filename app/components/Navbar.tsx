@@ -46,10 +46,14 @@ export function Navbar() {
               )
             }
           >
-            <item.icon className={cn("w-5 h-5 transition-transform duration-300 group-hover:scale-110", item.primary && "w-6 h-6")} />
-            <span className={cn(item.primary ? "text-base" : "text-sm")}>{item.label}</span>
-            {isActive && (
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-white rounded-r-full" />
+            {({ isActive }) => (
+              <>
+                <item.icon className={cn("w-5 h-5 transition-transform duration-300 group-hover:scale-110", item.primary && "w-6 h-6")} />
+                <span className={cn(item.primary ? "text-base" : "text-sm")}>{item.label}</span>
+                {isActive && (
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-white rounded-r-full" />
+                )}
+              </>
             )}
           </NavLink>
         ))}

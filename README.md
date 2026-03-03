@@ -1,16 +1,16 @@
-# 📊 DataGouv Insight
+# DataGouv Insight
 
 Une plateforme moderne d'analyse et de visualisation des données publiques françaises (OpenData), conçue pour offrir une interface intuitive aux professionnels et décideurs.
 
-## ✨ Fonctionnalités Clés
+## Fonctionnalités Clés
 
-- **📈 Analyse des Tendances** : Visualisation en temps réel des indicateurs de conjoncture économique via l'API officielle de Data.gouv.fr.
-- **💰 Veille sur les Subventions** : Moteur de recherche performant pour identifier les aides publiques et subventions disponibles.
-- **⚖️ Suivi Réglementaire** : Accès simplifié aux dernières réglementations sectorielles (Bâtiment, Alimentaire, Fiscalité, etc.).
-- **🤖 Assistant IA Contextuel** : Intégration de l'IA (via Groq) pour interpréter les jeux de données complexes et fournir des conseils personnalisés.
-- **🔌 Architecture MCP** : Utilisation du Model Context Protocol pour une interaction fluide entre l'IA et les sources de données gouvernementales.
+- **Analyse des Tendances** : Visualisation en temps réel des indicateurs de conjoncture économique via l'API officielle de Data.gouv.fr.
+- **Veille sur les Subventions** : Moteur de recherche performant pour identifier les aides publiques et subventions disponibles.
+- **Suivi Réglementaire** : Accès simplifié aux dernières réglementations sectorielles (Bâtiment, Alimentaire, Fiscalité, etc.).
+- **Assistant IA Contextuel** : Intégration de l'IA (via Groq) pour interpréter les jeux de données complexes et fournir des conseils personnalisés.
+- **Architecture MCP** : Utilisation du Model Context Protocol pour une interaction fluide entre l'IA et les sources de données gouvernementales.
 
-## 🛠️ Stack Technique
+## Stack Technique
 
 - **Frontend** : React 18 avec [React Router v7](https://reactrouter.com/) (Framework full-stack).
 - **Styling** : [Tailwind CSS](https://tailwindcss.com/) pour une interface responsive et mode sombre natif.
@@ -19,7 +19,7 @@ Une plateforme moderne d'analyse et de visualisation des données publiques fran
 - **LLM** : Groq SDK pour des réponses IA ultra-rapides.
 - **Langage** : TypeScript pour une robustesse maximale du code.
 
-## 🚀 Installation et Démarrage
+## Installation et Démarrage
 
 ### Prérequis
 
@@ -50,7 +50,7 @@ pnpm dev
 
 L'application sera accessible sur `http://localhost:5173`.
 
-## 🏗️ Architecture du Projet
+## Architecture du Projet
 
 ```text
 ├── app/
@@ -62,7 +62,7 @@ L'application sera accessible sur `http://localhost:5173`.
 └── build/             # Output de production
 ```
 
-## 🌐 Déploiement
+## Déploiement
 
 Le projet est optimisé pour un déploiement sur Vercel, Netlify ou toute plateforme supportant Node.js.
 

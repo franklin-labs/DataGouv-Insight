@@ -328,7 +328,7 @@ export default function Chat() {
               )}
             </button>
           </form>
-          <p className="mt-1 sm:mt-2 text-[9px] sm:text-[10px] text-center text-slate-400 font-bold uppercase tracking-[0.2em]">
+          <p className="mt-3 sm:mt-4 text-[9px] sm:text
             Appuyez sur Entrée pour envoyer
           </p>
         </div>
