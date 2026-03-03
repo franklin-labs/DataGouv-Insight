@@ -68,6 +68,12 @@ export function useChatStore() {
     return newMessage;
   };
 
+  const updateMessage = (id: string, content: string) => {
+    setMessages((prev) =>
+      prev.map((m) => (m.id === id ? { ...m, content } : m))
+    );
+  };
+
   const clearChat = () => {
     setMessages([]);
   };
@@ -92,6 +98,7 @@ export function useChatStore() {
     setModel,
     messages,
     addMessage,
+    updateMessage,
     clearChat,
     clearAllData,
     isLoaded,

@@ -8,8 +8,8 @@ function cn(...inputs: ClassValue[]) {
 }
 
 const navItems = [
-  { to: "/", icon: LayoutDashboard, label: "Tableau de bord", primary: true },
-  { to: "/chat", icon: MessageSquare, label: "Chat Franklin", primary: true },
+  { to: "/", icon: LayoutDashboard, label: "Tableau de bord" },
+  { to: "/chat", icon: MessageSquare, label: "Chat" },
   { to: "/subsidies", icon: HandCoins, label: "Subventions" },
   { to: "/market-trends", icon: TrendingUp, label: "Tendances Marché" },
   { to: "/regulations", icon: ShieldCheck, label: "Réglementation" },
@@ -24,7 +24,7 @@ export function Navbar() {
           <TrendingUp className="w-10 h-10 text-white" />
         </div>
         <h1 className="text-2xl font-black bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent tracking-tighter">
-          DataGouv Insight
+          DataPulse AI
         </h1>
         <div className="mt-1 px-2 py-0.5 bg-indigo-500/20 rounded-full border border-indigo-500/30">
           <p className="text-[10px] text-indigo-300 font-black uppercase tracking-widest">Analytics Pro</p>

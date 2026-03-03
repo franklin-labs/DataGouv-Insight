@@ -119,7 +119,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             </p>
 
             <a 
-              href="mailto:votre-email@exemple.com" 
+              href="mailto:st04fdelbo@gmail.com" 
               className="flex items-center justify-center gap-2 w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-bold transition-all shadow-lg shadow-indigo-600/20 group"
             >
               <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />

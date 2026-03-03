@@ -30,14 +30,14 @@ export default function Dashboard({ loaderData }: Route.ComponentProps) {
       {/* Colonne Principale: Conseils IA et Résumé */}
       <div className="lg:col-span-2 space-y-6 md:space-y-8">
         {/* Widget Conseil IA */}
-        <section className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl md:rounded-3xl p-6 md:p-8 text-white shadow-xl shadow-blue-500/20">
+        <section className="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-2xl md:rounded-3xl p-6 md:p-8 text-white shadow-xl shadow-indigo-500/20">
           <div className="flex items-center gap-3 mb-4 md:mb-6">
             <div className="p-2 md:p-3 bg-white/20 rounded-xl">
-              <Lightbulb className="w-6 h-6 md:w-7 md:h-7" />
+              <TrendingUp className="w-6 h-6 md:w-7 md:h-7" />
             </div>
-            <h3 className="text-xl md:text-2xl font-black">Conseils de l'Assistant IA</h3>
+            <h3 className="text-xl md:text-2xl font-black">DataPulse Insight</h3>
           </div>
-          <p className="text-blue-50 text-base md:text-lg leading-relaxed italic font-medium">
+          <p className="text-indigo-50 text-base md:text-lg leading-relaxed italic font-medium">
             "{advice}"
           </p>
         </section>
