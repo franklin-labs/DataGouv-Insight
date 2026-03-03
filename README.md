@@ -1,87 +1,75 @@
-# Welcome to React Router!
+# 📊 DataGouv Insight
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Une plateforme moderne d'analyse et de visualisation des données publiques françaises (OpenData), conçue pour offrir une interface intuitive aux professionnels et décideurs.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## ✨ Fonctionnalités Clés
 
-## Features
+- **📈 Analyse des Tendances** : Visualisation en temps réel des indicateurs de conjoncture économique via l'API officielle de Data.gouv.fr.
+- **💰 Veille sur les Subventions** : Moteur de recherche performant pour identifier les aides publiques et subventions disponibles.
+- **⚖️ Suivi Réglementaire** : Accès simplifié aux dernières réglementations sectorielles (Bâtiment, Alimentaire, Fiscalité, etc.).
+- **🤖 Assistant IA Contextuel** : Intégration de l'IA (via Groq) pour interpréter les jeux de données complexes et fournir des conseils personnalisés.
+- **🔌 Architecture MCP** : Utilisation du Model Context Protocol pour une interaction fluide entre l'IA et les sources de données gouvernementales.
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## 🛠️ Stack Technique
 
-## Getting Started
+- **Frontend** : React 18 avec [React Router v7](https://reactrouter.com/) (Framework full-stack).
+- **Styling** : [Tailwind CSS](https://tailwindcss.com/) pour une interface responsive et mode sombre natif.
+- **Icons** : [Lucide React](https://lucide.dev/) pour une iconographie moderne.
+- **API Data** : Intégration directe avec l'API de [Data.gouv.fr](https://www.data.gouv.fr/).
+- **LLM** : Groq SDK pour des réponses IA ultra-rapides.
+- **Langage** : TypeScript pour une robustesse maximale du code.
+
+## 🚀 Installation et Démarrage
+
+### Prérequis
+
+- Node.js (v18+)
+- pnpm (recommandé) ou npm
 
 ### Installation
 
-Install the dependencies:
+```bash
+pnpm install
+```
+
+### Configuration
+
+Créez un fichier `.env` à la racine du projet :
+
+```env
+GROQ_API_KEY=votre_cle_groq
+```
+
+### Développement
+
+Lancez le serveur de développement avec HMR :
 
 ```bash
-npm install
+pnpm dev
 ```
 
-### Development
+L'application sera accessible sur `http://localhost:5173`.
 
-Start the development server with HMR:
+## 🏗️ Architecture du Projet
+
+```text
+├── app/
+│   ├── components/    # Composants UI réutilisables (Navbar, Cards, etc.)
+│   ├── lib/           # Logique métier, API clients et stores (Zustand)
+│   ├── routes/        # Pages et gestion du routage (React Router v7)
+│   └── root.tsx       # Point d'entrée de l'application
+├── public/            # Assets statiques
+└── build/             # Output de production
+```
+
+## 🌐 Déploiement
+
+Le projet est optimisé pour un déploiement sur Vercel, Netlify ou toute plateforme supportant Node.js.
 
 ```bash
-npm run dev
+pnpm build
+pnpm start
 ```
-
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
 
 ---
-
-Built with ❤️ using React Router.
+Développé avec passion pour rendre la donnée publique accessible et actionnable.
