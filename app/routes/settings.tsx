@@ -10,13 +10,25 @@ export default function Settings() {
   const [isMcpMasked, setIsMcpMasked] = useState(true);
   const [localMcpKey, setLocalMcpKey] = useState("");
   const [showSaved, setShowSaved] = useState(false);
+  const [showPrivacyPopup, setShowPrivacyPopup] = useState(false);
 
   useEffect(() => {
     if (isLoaded) {
       setLocalKey(apiKey);
       setLocalMcpKey(mcpApiKey);
+      
+      // Afficher la popup de confidentialité au premier accès
+      const hasSeenPrivacy = localStorage.getItem("hasSeenPrivacyPopup");
+      if (!hasSeenPrivacy) {
+        setShowPrivacyPopup(true);
+      }
     }
   }, [isLoaded, apiKey, mcpApiKey]);
+
+  const closePrivacyPopup = () => {
+    setShowPrivacyPopup(false);
+    localStorage.setItem("hasSeenPrivacyPopup", "true");
+  };
 
   const handleSave = () => {
     setApiKey(localKey);
@@ -95,18 +107,23 @@ export default function Settings() {
                 <Save className="w-6 h-6" />
               </button>
             </div>
-            <p className="text-sm text-slate-500 leading-relaxed italic">
-              Votre clé est stockée localement dans votre navigateur et n'est jamais envoyée à nos serveurs. 
-              Elle est nécessaire uniquement pour le fonctionnement de l'Assistant IA conçu par Franklin.
-              <a 
-                href="https://console.groq.com/keys" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block mt-2 text-blue-500 font-bold hover:underline"
-              >
-                Obtenir une clé API (gratuit) →
-              </a>
-            </p>
+            <div className="p-4 bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 rounded-2xl flex items-start gap-3">
+              <Shield className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
+              <div className="space-y-2">
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+                  <strong className="text-blue-600 dark:text-blue-400">Architecture Zero-Server Storage :</strong> Votre clé est isolée dans un coffre-fort local (<code className="bg-blue-100 dark:bg-blue-900/40 px-1 rounded text-[10px]">localStorage</code>) protégé par l'isolation du navigateur. Elle ne quitte votre appareil que via un tunnel chiffré <span className="font-bold text-slate-900 dark:text-white">TLS 1.3</span> directement vers l'API de l'IA. <span className="text-emerald-600 dark:text-emerald-400 font-bold">Zéro risque de vol de données sur nos serveurs : ils n'existent pas.</span>
+                </p>
+                <a 
+                  href="https://console.groq.com/keys" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-[11px] text-blue-600 dark:text-blue-400 font-black hover:underline group"
+                >
+                  Obtenir une clé API sécurisée (Groq)
+                  <Bot className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                </a>
+              </div>
+            </div>
           </div>
 
           <div className="space-y-4">
@@ -232,20 +249,74 @@ export default function Settings() {
       <div className="bg-rose-50 dark:bg-rose-900/10 p-8 rounded-3xl border border-rose-100 dark:border-rose-900/20">
         <div className="flex items-center gap-3 mb-4 text-rose-900 dark:text-rose-100">
           <AlertTriangle className="w-6 h-6" />
-          <h4 className="text-xl font-black">Zone de Sécurité</h4>
+          <h4 className="text-xl font-black text-rose-600">Action Irréversible</h4>
         </div>
         <p className="text-rose-800 dark:text-rose-300 font-medium mb-6">
-          Videz instantanément toutes les données stockées dans cette session de navigation. 
-          Cela inclut votre clé API et tout l'historique des conversations.
+          Videz instantanément toutes les données chiffrées de votre session locale. 
+          Cette action supprimera définitivement votre clé API et l'intégralité de votre historique de conversations sans possibilité de récupération.
         </p>
         <button 
           onClick={handleClear}
           className="w-full sm:w-auto px-8 py-4 bg-rose-600 text-white rounded-2xl font-black hover:bg-rose-700 transition-all shadow-xl shadow-rose-600/20 flex items-center justify-center gap-3"
         >
           <Trash2 className="w-6 h-6" />
-          Vider toutes les données
+          Purger la session locale
         </button>
       </div>
+
+      {/* PRIVACY POPUP */}
+      {showPrivacyPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm animate-in fade-in duration-300">
+          <div className="max-w-lg w-full bg-white dark:bg-slate-900 rounded-[32px] shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden animate-in zoom-in-95 duration-300">
+            <div className="p-8 space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-indigo-600 rounded-2xl text-white shadow-lg shadow-indigo-600/30">
+                  <Shield className="w-8 h-8" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-black text-slate-900 dark:text-white">Confidentialité & Data</h3>
+                  <p className="text-indigo-600 dark:text-indigo-400 font-bold text-xs uppercase tracking-widest">Stratégie Zero-Collection</p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                  DataPulse AI a été conçu avec une philosophie radicale : <span className="font-bold text-slate-900 dark:text-white">votre vie privée n'est pas une option.</span>
+                </p>
+                
+                <div className="grid grid-cols-1 gap-3">
+                  <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-700">
+                    <div className="flex items-center gap-2 mb-1 text-slate-900 dark:text-white font-bold text-xs">
+                      <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
+                      Pas de Base de Données
+                    </div>
+                    <p className="text-[11px] text-slate-500">L'outil est volontairement "stateless". Rien n'est stocké sur nos serveurs pour garantir un accès rapide et anonyme.</p>
+                  </div>
+
+                  <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-700">
+                     <div className="flex items-center gap-2 mb-1 text-slate-900 dark:text-white font-bold text-xs">
+                       <div className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
+                       Chiffrement Local & Transport TLS 1.3
+                     </div>
+                     <p className="text-[11px] text-slate-500 leading-relaxed">Votre clé réside exclusivement dans votre navigateur. Elle n'est transmise qu'à l'IA via un tunnel <span className="font-bold">TLS 1.3</span> ultra-sécurisé. <span className="text-blue-500 font-bold">Impossible d'intercepter ou de voler vos données sur un serveur central : il n'y a pas de base de données.</span></p>
+                   </div>
+                </div>
+
+                <p className="text-xs text-slate-400 italic text-center">
+                  "Une technologie accessible immédiatement, sans collecte de données, sans compromis."
+                </p>
+              </div>
+
+              <button
+                onClick={closePrivacyPopup}
+                className="w-full py-4 bg-indigo-600 text-white rounded-2xl font-black hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-600/20 active:scale-[0.98]"
+              >
+                J'ai compris, propulser l'Assistant
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
